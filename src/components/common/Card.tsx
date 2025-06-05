@@ -12,22 +12,28 @@ const CardVariants = {
   default: css`
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: ${({ theme }) => theme.shadows.base};
-    border: none;
+    border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   `,
   elevated: css`
-    background-color: ${({ theme }) => theme.colors.white};
+    background: linear-gradient(135deg, ${({ theme }) => theme.colors.white} 0%, ${({ theme }) => theme.colors.accent} 100%);
     box-shadow: ${({ theme }) => theme.shadows.lg};
-    border: none;
+    border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
     
     &:hover {
       box-shadow: ${({ theme }) => theme.shadows.xl};
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      border-color: ${({ theme }) => theme.colors.secondary};
     }
   `,
   outlined: css`
     background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: none;
-    border: 1px solid ${({ theme }) => theme.colors.neutral[300]};
+    box-shadow: ${({ theme }) => theme.shadows.sm};
+    border: 2px solid ${({ theme }) => theme.colors.neutral[300]};
+    
+    &:hover {
+      border-color: ${({ theme }) => theme.colors.secondary};
+      box-shadow: ${({ theme }) => theme.shadows.md};
+    }
   `
 };
 

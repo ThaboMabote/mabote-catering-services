@@ -6,8 +6,10 @@ import { Container } from '../common/Container';
 import { Button } from '../common/Button';
 
 const HeaderWrapper = styled.header`
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.shadows.base};
+  background: linear-gradient(90deg, ${({ theme }) => theme.colors.white} 0%, ${({ theme }) => theme.colors.accent} 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -23,8 +25,8 @@ const Nav = styled.nav`
 const Logo = styled(Link)`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: ${({ theme }) => theme.fontSizes['2xl']};
-  font-weight: 700;
-  background: linear-gradient(45deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+  font-weight: 800;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -33,7 +35,8 @@ const Logo = styled(Link)`
   
   &:hover {
     transform: scale(1.05);
-    filter: brightness(1.1);
+    filter: brightness(1.2);
+    text-shadow: 0 0 20px rgba(201, 169, 97, 0.3);
   }
 `;
 

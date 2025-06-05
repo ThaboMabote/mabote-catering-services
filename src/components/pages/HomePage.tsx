@@ -10,10 +10,10 @@ import { services, testimonials } from '../../data/sampleData';
 const HeroSection = styled.section`
   background: linear-gradient(
     135deg,
-    rgba(0, 35, 149, 0.8),
-    rgba(0, 119, 73, 0.8),
-    rgba(255, 184, 28, 0.8),
-    rgba(255, 121, 0, 0.7)
+    rgba(27, 54, 93, 0.95) 0%,
+    rgba(44, 95, 65, 0.9) 35%,
+    rgba(201, 169, 97, 0.85) 70%,
+    rgba(247, 147, 30, 0.8) 100%
   ), url('/images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -24,6 +24,7 @@ const HeroSection = styled.section`
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   position: relative;
+  overflow: hidden;
   
   &::before {
     content: '';
@@ -32,22 +33,50 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 184, 28, 0.1) 50%, transparent 70%);
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(27, 54, 93, 0.2) 70%);
     pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(201, 169, 97, 0.1) 50%, transparent 70%);
+    animation: shimmer 8s infinite linear;
+    pointer-events: none;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
   }
 `;
 
 const HeroContent = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 `;
 
 const HeroTitle = styled(motion.h1)`
   font-size: ${({ theme }) => theme.fontSizes['6xl']};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(27, 54, 93, 0.3);
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
+  }
+
+  span {
+    background: linear-gradient(135deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 `;
 
@@ -55,6 +84,8 @@ const HeroSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   opacity: 0.9;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(27, 54, 93, 0.2);
 `;
 
 const HeroButtons = styled(motion.div)`
@@ -65,7 +96,9 @@ const HeroButtons = styled(motion.div)`
 `;
 
 const StatsSection = styled(Section)`
-  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.accent} 0%, ${({ theme }) => theme.colors.neutral[100]} 100%);
+  border-top: 1px solid ${({ theme }) => theme.colors.neutral[200]};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.neutral[200]};
 `;
 
 const StatsGrid = styled.div`
@@ -85,18 +118,26 @@ const StatCard = styled(motion.div)`
 const StatIcon = styled.div`
   width: 80px;
   height: 80px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.tertiary});
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.shadows.lg};
+  transition: all ${({ theme }) => theme.transitions.base};
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const StatNumber = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes['3xl']};
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   margin: 0;
+  font-weight: 700;
 `;
 
 const StatLabel = styled.p`
@@ -150,8 +191,20 @@ const StarRating = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  color: ${({ theme }) => theme.colors.secondary};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-weight: 700;
+  position: relative;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+    margin: ${({ theme }) => theme.spacing.md} auto 0;
+    border-radius: ${({ theme }) => theme.borderRadius.full};
+  }
 `;
 
 const SectionSubtitle = styled.p`
@@ -159,9 +212,11 @@ const SectionSubtitle = styled.p`
   color: ${({ theme }) => theme.colors.neutral[600]};
   font-size: ${({ theme }) => theme.fontSizes.lg};
   margin-bottom: ${({ theme }) => theme.spacing['3xl']};
-  max-width: 600px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.8;
+  font-weight: 300;
 `;
 
 export const HomePage: React.FC = () => {
@@ -182,7 +237,7 @@ export const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Premium Event Equipment Rental
+              Premium <span>Event Equipment</span> Rental
             </HeroTitle>
             <HeroSubtitle
               initial={{ opacity: 0, y: 30 }}

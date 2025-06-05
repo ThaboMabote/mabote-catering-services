@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Package, Info } from 'lucide-react';
+import { Package } from 'lucide-react';
 import { Container, Section } from '../common/Container';
 import { Card } from '../common/Card';
 import { Button } from '../common/Button';
@@ -9,19 +9,38 @@ import { equipmentItems } from '../../data/sampleData';
 
 const PageHeader = styled(Section)`
   background: linear-gradient(
-    rgba(44, 62, 80, 0.8),
-    rgba(232, 184, 109, 0.8)
+    135deg,
+    rgba(27, 54, 93, 0.95) 0%,
+    rgba(44, 95, 65, 0.9) 35%,
+    rgba(201, 169, 97, 0.85) 70%,
+    rgba(247, 147, 30, 0.8) 100%
   ), url('/images/equipment-hero.jpg');
   background-size: cover;
   background-position: center;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   padding: ${({ theme }) => theme.spacing['5xl']} 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(27, 54, 93, 0.2) 70%);
+    pointer-events: none;
+  }
 `;
 
 const PageTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes['5xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(27, 54, 93, 0.3);
+  position: relative;
+  z-index: 2;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
@@ -33,6 +52,10 @@ const PageSubtitle = styled.p`
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(27, 54, 93, 0.2);
+  position: relative;
+  z-index: 2;
 `;
 
 const FilterSection = styled.div`
@@ -44,15 +67,23 @@ const FilterSection = styled.div`
 `;
 
 const FilterButton = styled(Button)<{ active: boolean }>`
-  background-color: ${({ active, theme }) => 
-    active ? theme.colors.primary : 'transparent'};
+  background: ${({ active, theme }) => 
+    active 
+      ? `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.tertiary})` 
+      : 'transparent'};
   color: ${({ active, theme }) => 
-    active ? theme.colors.white : theme.colors.neutral[600]};
+    active ? theme.colors.white : theme.colors.primary};
   border: 2px solid ${({ theme }) => theme.colors.primary};
-  
+  box-shadow: ${({ active, theme }) => active ? theme.shadows.md : 'none'};
+
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
+    background: ${({ active, theme }) => 
+      active 
+        ? `linear-gradient(135deg, ${theme.colors.secondary}, ${theme.colors.highlight})` 
+        : `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.tertiary})`};
     color: ${({ theme }) => theme.colors.white};
+    box-shadow: ${({ theme }) => theme.shadows.lg};
+    transform: translateY(-2px);
   }
 `;
 

@@ -8,19 +8,38 @@ import { teamMembers } from '../../data/sampleData';
 
 const PageHeader = styled(Section)`
   background: linear-gradient(
-    rgba(44, 62, 80, 0.8),
-    rgba(232, 184, 109, 0.8)
+    135deg,
+    rgba(27, 54, 93, 0.95) 0%,
+    rgba(44, 95, 65, 0.9) 35%,
+    rgba(201, 169, 97, 0.85) 70%,
+    rgba(247, 147, 30, 0.8) 100%
   ), url('/images/about-hero.jpg');
   background-size: cover;
   background-position: center;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   padding: ${({ theme }) => theme.spacing['5xl']} 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(27, 54, 93, 0.2) 70%);
+    pointer-events: none;
+  }
 `;
 
 const PageTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes['5xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(27, 54, 93, 0.3);
+  position: relative;
+  z-index: 2;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
@@ -32,10 +51,14 @@ const PageSubtitle = styled.p`
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(27, 54, 93, 0.2);
+  position: relative;
+  z-index: 2;
 `;
 
 const StorySection = styled(Section)`
-  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.accent}30, ${({ theme }) => theme.colors.neutral[50]});
 `;
 
 const StoryGrid = styled.div`
@@ -52,28 +75,50 @@ const StoryGrid = styled.div`
 
 const StoryContent = styled.div`
   h2 {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.fontSizes['3xl']};
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+      border-radius: 2px;
+    }
   }
   
   p {
     color: ${({ theme }) => theme.colors.neutral[600]};
     line-height: 1.8;
     margin-bottom: ${({ theme }) => theme.spacing.lg};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
   }
 `;
 
 const StoryImage = styled.div`
   width: 100%;
   height: 400px;
-  background: linear-gradient(45deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: 600;
+  box-shadow: ${({ theme }) => theme.shadows.xl};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: ${({ theme }) => theme.shadows.glow};
+  }
 `;
 
 const ValuesGrid = styled.div`
@@ -89,13 +134,20 @@ const ValueCard = styled(motion.div)`
 const ValueIcon = styled.div`
   width: 80px;
   height: 80px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   margin: 0 auto ${({ theme }) => theme.spacing.lg};
+  box-shadow: ${({ theme }) => theme.shadows.glow};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const TeamGrid = styled.div`
@@ -116,7 +168,7 @@ const TeamCardContent = styled(Card)`
 const TeamMemberImage = styled.div`
   width: 150px;
   height: 150px;
-  background: linear-gradient(45deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -125,15 +177,23 @@ const TeamMemberImage = styled.div`
   font-weight: 600;
   margin: 0 auto ${({ theme }) => theme.spacing.lg};
   font-size: ${({ theme }) => theme.fontSizes.lg};
+  box-shadow: ${({ theme }) => theme.shadows.glow};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const TeamMemberName = styled.h3`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-weight: 700;
 `;
 
 const TeamMemberPosition = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
   font-weight: 600;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
@@ -146,8 +206,23 @@ const TeamMemberBio = styled.p`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fontSizes['3xl']};
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+    border-radius: 2px;
+  }
 `;
 
 const SectionSubtitle = styled.p`

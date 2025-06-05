@@ -9,19 +9,38 @@ import { services } from '../../data/sampleData';
 
 const PageHeader = styled(Section)`
   background: linear-gradient(
-    rgba(44, 62, 80, 0.8),
-    rgba(232, 184, 109, 0.8)
+    135deg,
+    rgba(27, 54, 93, 0.95) 0%,
+    rgba(44, 95, 65, 0.9) 35%,
+    rgba(201, 169, 97, 0.85) 70%,
+    rgba(247, 147, 30, 0.8) 100%
   ), url('/images/services-hero.jpg');
   background-size: cover;
   background-position: center;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   padding: ${({ theme }) => theme.spacing['5xl']} 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(27, 54, 93, 0.2) 70%);
+    pointer-events: none;
+  }
 `;
 
 const PageTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes['5xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(27, 54, 93, 0.3);
+  position: relative;
+  z-index: 2;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
@@ -33,6 +52,10 @@ const PageSubtitle = styled.p`
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(27, 54, 93, 0.2);
+  position: relative;
+  z-index: 2;
 `;
 
 const ServicesGrid = styled.div`
@@ -53,19 +76,27 @@ const ServiceCardContent = styled(Card)`
 const ServiceIcon = styled.div`
   width: 100px;
   height: 100px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   margin: 0 auto ${({ theme }) => theme.spacing.lg};
+  box-shadow: ${({ theme }) => theme.shadows.glow};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const ServiceTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-size: ${({ theme }) => theme.fontSizes['2xl']};
+  font-weight: 700;
 `;
 
 const ServiceDescription = styled.p`
@@ -90,16 +121,17 @@ const FeatureItem = styled.li`
   text-align: left;
   
   svg {
-    color: ${({ theme }) => theme.colors.success};
+    color: ${({ theme }) => theme.colors.tertiary};
     flex-shrink: 0;
   }
 `;
 
 const PricingInfo = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.accent}, ${({ theme }) => theme.colors.neutral[50]});
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  border: 1px solid ${({ theme }) => theme.colors.primary}20;
 `;
 
 const PricingLabel = styled.p`
@@ -116,7 +148,7 @@ const PricingAmount = styled.p`
 `;
 
 const ProcessSection = styled(Section)`
-  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.accent}50, ${({ theme }) => theme.colors.neutral[50]});
 `;
 
 const ProcessGrid = styled.div`
@@ -132,7 +164,7 @@ const ProcessStep = styled(motion.div)`
 const StepNumber = styled.div`
   width: 80px;
   height: 80px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -141,12 +173,34 @@ const StepNumber = styled.div`
   font-size: ${({ theme }) => theme.fontSizes['2xl']};
   font-weight: 700;
   margin: 0 auto ${({ theme }) => theme.spacing.lg};
+  box-shadow: ${({ theme }) => theme.shadows.glow};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const SectionTitle = styled.h2`
   text-align: center;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fontSizes['3xl']};
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+    border-radius: 2px;
+  }
 `;
 
 const SectionSubtitle = styled.p`

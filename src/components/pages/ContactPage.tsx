@@ -12,19 +12,38 @@ import { ContactForm } from '../../types';
 
 const PageHeader = styled(Section)`
   background: linear-gradient(
-    rgba(44, 62, 80, 0.8),
-    rgba(232, 184, 109, 0.8)
+    135deg,
+    rgba(27, 54, 93, 0.95) 0%,
+    rgba(44, 95, 65, 0.9) 35%,
+    rgba(201, 169, 97, 0.85) 70%,
+    rgba(247, 147, 30, 0.8) 100%
   ), url('/images/contact-hero.jpg');
   background-size: cover;
   background-position: center;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   padding: ${({ theme }) => theme.spacing['5xl']} 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(27, 54, 93, 0.2) 70%);
+    pointer-events: none;
+  }
 `;
 
 const PageTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes['5xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(27, 54, 93, 0.3);
+  position: relative;
+  z-index: 2;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
@@ -36,6 +55,10 @@ const PageSubtitle = styled.p`
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(27, 54, 93, 0.2);
+  position: relative;
+  z-index: 2;
 `;
 
 const ContactGrid = styled.div`
@@ -64,32 +87,55 @@ const ContactItem = styled(Card)`
 const ContactIcon = styled.div`
   width: 60px;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   flex-shrink: 0;
+  box-shadow: ${({ theme }) => theme.shadows.glow};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 `;
 
 const ContactDetails = styled.div`
   h3 {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
     margin-bottom: ${({ theme }) => theme.spacing.sm};
+    font-weight: 700;
   }
   
   p {
     color: ${({ theme }) => theme.colors.neutral[600]};
     margin: 0;
     line-height: 1.6;
+    font-size: ${({ theme }) => theme.fontSizes.base};
   }
 `;
 
 const FormContainer = styled(Card)`
   h2 {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
     margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.fontSizes['2xl']};
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
+      border-radius: 2px;
+    }
   }
 `;
 
@@ -117,20 +163,27 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
 `;
 
 const Input = styled.input<{ hasError?: boolean }>`
   padding: ${({ theme }) => theme.spacing.md};
   border: 2px solid ${({ hasError, theme }) => 
     hasError ? theme.colors.error : theme.colors.neutral[300]};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
   font-size: ${({ theme }) => theme.fontSizes.base};
-  transition: border-color ${({ theme }) => theme.transitions.fast};
+  transition: all ${({ theme }) => theme.transitions.fast};
+  background-color: ${({ theme }) => theme.colors.white};
   
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
+  }
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
@@ -138,14 +191,19 @@ const Select = styled.select<{ hasError?: boolean }>`
   padding: ${({ theme }) => theme.spacing.md};
   border: 2px solid ${({ hasError, theme }) => 
     hasError ? theme.colors.error : theme.colors.neutral[300]};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
   font-size: ${({ theme }) => theme.fontSizes.base};
-  transition: border-color ${({ theme }) => theme.transitions.fast};
+  transition: all ${({ theme }) => theme.transitions.fast};
   background-color: ${({ theme }) => theme.colors.white};
   
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
+  }
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
@@ -153,16 +211,22 @@ const TextArea = styled.textarea<{ hasError?: boolean }>`
   padding: ${({ theme }) => theme.spacing.md};
   border: 2px solid ${({ hasError, theme }) => 
     hasError ? theme.colors.error : theme.colors.neutral[300]};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
   font-size: ${({ theme }) => theme.fontSizes.base};
-  transition: border-color ${({ theme }) => theme.transitions.fast};
+  transition: all ${({ theme }) => theme.transitions.fast};
   min-height: 120px;
   resize: vertical;
   font-family: inherit;
+  background-color: ${({ theme }) => theme.colors.white};
   
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
+  }
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 

@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import { Theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
   * {
     margin: 0;
     padding: 0;
@@ -15,9 +17,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
   body {
     font-family: ${({ theme }) => theme.fonts.primary};
     font-size: ${({ theme }) => theme.fontSizes.base};
-    line-height: 1.6;
+    line-height: 1.7;
     color: ${({ theme }) => theme.colors.neutral[800]};
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.neutral[50]};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -25,8 +27,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.fonts.heading};
     font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: ${({ theme }) => theme.spacing.md};
+    line-height: 1.3;
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   h1 {
@@ -70,12 +73,14 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
   }
 
   a {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.secondary};
     text-decoration: none;
-    transition: color ${({ theme }) => theme.transitions.fast};
+    transition: all ${({ theme }) => theme.transitions.fast};
+    font-weight: 500;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.highlight};
+      text-decoration: underline;
     }
   }
 

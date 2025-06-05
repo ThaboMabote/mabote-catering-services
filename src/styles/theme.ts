@@ -1,33 +1,33 @@
 export const theme = {
   colors: {
-    primary: '#FFB81C',      // South African gold (inspired by Springbok gold)
-    secondary: '#007749',    // South African green (inspired by Protea green)
-    accent: '#E03C31',       // South African red (inspired by flag red)
-    orange: '#FF7900',       // South African flag orange
-    blue: '#002395',         // South African flag blue
+    primary: '#1B365D',      // Deep navy blue - professional, trustworthy
+    secondary: '#C9A961',    // Warm gold - luxury, elegance
+    accent: '#E8F4F8',       // Light blue-grey - clean, modern
+    tertiary: '#2C5F41',     // Forest green - South African nature
+    highlight: '#F7931E',    // Vibrant orange - energy, creativity
     neutral: {
-      50: '#FAFAFA',
-      100: '#F8F9FA',
-      200: '#E9ECEF',
-      300: '#DEE2E6',
-      400: '#CED4DA',
-      500: '#6C757D',
-      600: '#495057',
-      700: '#343A40',
-      800: '#212529',
-      900: '#000000'
+      50: '#FAFBFC',
+      100: '#F5F7FA',
+      200: '#E4E7EB',
+      300: '#CBD2D9',
+      400: '#9AA5B1',
+      500: '#7B8794',
+      600: '#616E7C',
+      700: '#52606D',
+      800: '#3E4C59',
+      900: '#323F4B'
     },
-    success: '#007749',      // Using SA green for success
-    warning: '#FFB81C',      // Using SA gold for warning
-    error: '#E03C31',        // Using SA red for error
+    success: '#10B981',      // Modern green
+    warning: '#F59E0B',      // Amber warning
+    error: '#EF4444',        // Clean red
     white: '#FFFFFF',
-    black: '#000000'
+    black: '#0F172A'
   },
   
   fonts: {
-    primary: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-    heading: "'Playfair Display', 'Georgia', serif",
-    monospace: "'Fira Code', 'Monaco', monospace"
+    primary: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
+    heading: "'Montserrat', 'Georgia', serif",
+    monospace: "'JetBrains Mono', 'Monaco', monospace"
   },
   
   fontSizes: {
@@ -64,24 +64,25 @@ export const theme = {
   },
   
   shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)'
+    sm: '0 1px 2px 0 rgba(27, 54, 93, 0.05)',
+    base: '0 1px 3px 0 rgba(27, 54, 93, 0.1), 0 1px 2px 0 rgba(27, 54, 93, 0.06)',
+    md: '0 4px 6px -1px rgba(27, 54, 93, 0.1), 0 2px 4px -1px rgba(27, 54, 93, 0.06)',
+    lg: '0 10px 15px -3px rgba(27, 54, 93, 0.1), 0 4px 6px -2px rgba(27, 54, 93, 0.05)',
+    xl: '0 20px 25px -5px rgba(27, 54, 93, 0.1), 0 10px 10px -5px rgba(27, 54, 93, 0.04)',
+    '2xl': '0 25px 50px -12px rgba(27, 54, 93, 0.25)',
+    inner: 'inset 0 2px 4px 0 rgba(27, 54, 93, 0.06)',
+    glow: '0 0 20px rgba(201, 169, 97, 0.3)'
   },
   
   borderRadius: {
     none: '0',
-    sm: '0.125rem',
-    base: '0.25rem',
-    md: '0.375rem',
-    lg: '0.5rem',
-    xl: '0.75rem',
-    '2xl': '1rem',
-    '3xl': '1.5rem',
+    sm: '0.25rem',
+    base: '0.5rem',
+    md: '0.75rem',
+    lg: '1rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '2rem',
     full: '9999px'
   },
   

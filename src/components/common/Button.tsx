@@ -13,36 +13,40 @@ interface ButtonProps {
 
 const ButtonVariants = {
   primary: css`
-    background: linear-gradient(45deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.orange});
+    background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.tertiary});
     color: ${({ theme }) => theme.colors.white};
     border: 2px solid ${({ theme }) => theme.colors.primary};
-    box-shadow: ${({ theme }) => theme.shadows.sm};
+    box-shadow: ${({ theme }) => theme.shadows.md};
 
     &:hover:not(:disabled) {
-      background: linear-gradient(45deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.blue});
+      background: linear-gradient(135deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
       border-color: ${({ theme }) => theme.colors.secondary};
-      box-shadow: ${({ theme }) => theme.shadows.md};
-      transform: translateY(-1px);
+      box-shadow: ${({ theme }) => theme.shadows.lg};
+      transform: translateY(-2px);
     }
   `,
   secondary: css`
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background: linear-gradient(135deg, ${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.highlight});
     color: ${({ theme }) => theme.colors.white};
     border: 2px solid ${({ theme }) => theme.colors.secondary};
+    box-shadow: ${({ theme }) => theme.shadows.sm};
 
     &:hover:not(:disabled) {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.tertiary});
       border-color: ${({ theme }) => theme.colors.primary};
+      box-shadow: ${({ theme }) => theme.shadows.md};
     }
   `,
   outline: css`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primary};
     border: 2px solid ${({ theme }) => theme.colors.primary};
+    backdrop-filter: blur(10px);
 
     &:hover:not(:disabled) {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.tertiary});
       color: ${({ theme }) => theme.colors.white};
+      box-shadow: ${({ theme }) => theme.shadows.md};
     }
   `,
   ghost: css`
