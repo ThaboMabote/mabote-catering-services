@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Award, Heart, Utensils, Users } from 'lucide-react';
+import { Award, Heart, Package, Users } from 'lucide-react';
 import { Container, Section } from '../common/Container';
 import { Card } from '../common/Card';
 import { teamMembers } from '../../data/sampleData';
@@ -163,9 +163,9 @@ const SectionSubtitle = styled.p`
 export const AboutPage: React.FC = () => {
   const values = [
     {
-      icon: <Utensils size={32} />,
-      title: 'Local Ingredients',
-      description: 'We source fresh ingredients from local South African farmers and suppliers, supporting our communities.'
+      icon: <Package size={32} />,
+      title: 'Quality Equipment',
+      description: 'We provide high-quality, well-maintained equipment that meets professional event standards.'
     },
     {
       icon: <Heart size={32} />,
@@ -174,13 +174,13 @@ export const AboutPage: React.FC = () => {
     },
     {
       icon: <Users size={32} />,
-      title: 'Cultural Heritage',
-      description: 'We celebrate South Africa\'s diverse culinary traditions from Cape Malay to traditional Zulu cuisine.'
+      title: 'Customer Service',
+      description: 'We prioritize exceptional customer service and work closely with clients to exceed expectations.'
     },
     {
       icon: <Award size={32} />,
-      title: 'Authentic Excellence',
-      description: 'We strive for authenticity in every traditional recipe and innovation in modern interpretations.'
+      title: 'Professional Excellence',
+      description: 'We strive for excellence in every aspect of our service, from equipment quality to timely delivery.'
     }
   ];
 
@@ -188,9 +188,9 @@ export const AboutPage: React.FC = () => {
     <>
       <PageHeader>
         <Container>
-          <PageTitle>About Mabote Catering</PageTitle>
+          <PageTitle>About Mabote Equipment Rental</PageTitle>
           <PageSubtitle>
-            Celebrating South African flavors and bringing our rich culinary heritage to your special moments
+            Providing quality event equipment to make your South African celebrations unforgettable
           </PageSubtitle>
         </Container>
       </PageHeader>
@@ -204,20 +204,20 @@ export const AboutPage: React.FC = () => {
               transition={{ duration: 0.8 }}
             >
               <StoryContent>
-                <h2>Our Heritage</h2>
+                <h2>Our Journey</h2>
                 <p>
-                  Founded in 2019 by Chef Nomsa Mabote in Johannesburg, Mabote Catering began with a vision to share 
-                  authentic South African flavors with the world. Growing up in Limpopo, Chef Nomsa learned traditional 
-                  cooking from her grandmother, blending time-honored recipes with modern culinary techniques.
+                  Founded in 2019 by Nomsa Mabote in Johannesburg, Mabote Equipment Rental began with a vision to provide 
+                  quality event equipment to communities across South Africa. Growing up in Limpopo, Nomsa saw how important 
+                  celebrations were to bringing families and communities together.
                 </p>
                 <p>
-                  What started as a small operation serving traditional braais has grown into one of South Africa's most 
-                  celebrated catering companies, known for our authentic Cape Malay curries, perfectly seasoned potjiekos, 
-                  and unforgettable braai experiences.
+                  What started as a small operation with a few tables and chairs has grown into one of South Africa's most 
+                  trusted equipment rental companies, known for our reliable service, quality equipment, and attention to detail 
+                  for every event.
                 </p>
                 <p>
-                  Today, we're proud to serve communities across Gauteng, Western Cape, and KwaZulu-Natal, bringing the 
-                  warmth of South African hospitality to weddings, corporate events, and heritage celebrations.
+                  Today, we're proud to serve communities across Gauteng, Western Cape, and KwaZulu-Natal, providing everything 
+                  from elegant wedding setups to professional corporate equipment, always with the warmth of South African hospitality.
                 </p>
               </StoryContent>
             </motion.div>
@@ -228,7 +228,7 @@ export const AboutPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <StoryImage>
-                Chef Nomsa in Action
+                Nomsa with Equipment
               </StoryImage>
             </motion.div>
           </StoryGrid>

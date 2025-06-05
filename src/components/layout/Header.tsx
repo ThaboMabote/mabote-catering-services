@@ -106,7 +106,7 @@ export const Header: React.FC = () => {
       <Container>
         <Nav>
           <Logo to="/" onClick={closeMobileMenu}>
-            Mabote Catering
+            Mabote Equipment
           </Logo>
           
           <NavLinks isOpen={isMobileMenuOpen}>
@@ -114,7 +114,7 @@ export const Header: React.FC = () => {
               Home
             </NavLink>
             <NavLink to="/menu" onClick={closeMobileMenu}>
-              Menu
+              Equipment
             </NavLink>
             <NavLink to="/services" onClick={closeMobileMenu}>
               Services

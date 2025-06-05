@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { ChefHat, Users, Calendar, Star } from 'lucide-react';
+import { Package, Users, Calendar, Star } from 'lucide-react';
 import { Container, Section } from '../common/Container';
 import { Button } from '../common/Button';
 import { Card } from '../common/Card';
@@ -166,8 +166,8 @@ const SectionSubtitle = styled.p`
 
 export const HomePage: React.FC = () => {
   const stats = [
-    { icon: <ChefHat size={32} />, number: '500+', label: 'Events Catered' },
-    { icon: <Users size={32} />, number: '10,000+', label: 'Happy Guests' },
+    { icon: <Package size={32} />, number: '500+', label: 'Events Equipped' },
+    { icon: <Users size={32} />, number: '10,000+', label: 'Happy Guests Seated' },
     { icon: <Calendar size={32} />, number: '5+', label: 'Years Experience' },
     { icon: <Star size={32} />, number: '4.9', label: 'Average Rating' }
   ];
@@ -182,15 +182,15 @@ export const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Authentic South African Catering
+              Premium Event Equipment Rental
             </HeroTitle>
             <HeroSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              From traditional braais to heritage celebrations, we bring the rich flavors 
-              and warm hospitality of South Africa to your special events.
+              From elegant weddings to corporate conferences, we provide quality tables, chairs, 
+              linens, and equipment to make your South African events unforgettable.
             </HeroSubtitle>
             <HeroButtons
               initial={{ opacity: 0, y: 30 }}
@@ -198,10 +198,10 @@ export const HomePage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <Button variant="primary" size="lg">
-                Traditional Menu
+                View Equipment
               </Button>
               <Button variant="outline" size="lg">
-                Book Your Braai
+                Get Quote
               </Button>
             </HeroButtons>
           </HeroContent>
@@ -232,7 +232,7 @@ export const HomePage: React.FC = () => {
         <Container>
           <SectionTitle>Our Services</SectionTitle>
           <SectionSubtitle>
-            We specialize in creating memorable dining experiences for every occasion
+            We specialize in providing quality equipment for memorable events and celebrations
           </SectionSubtitle>
           <ServicesGrid>
             {services.map((service, index) => (
@@ -245,7 +245,7 @@ export const HomePage: React.FC = () => {
               >
                 <Card variant="elevated">
                   <ServiceIcon>
-                    <ChefHat size={40} />
+                    <Package size={40} />
                   </ServiceIcon>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>

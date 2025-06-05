@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Briefcase, Heart, Users, Truck, Check } from 'lucide-react';
+import { Briefcase, Heart, Users, Package, Check } from 'lucide-react';
 import { Container, Section } from '../common/Container';
 import { Card } from '../common/Card';
 import { Button } from '../common/Button';
@@ -164,29 +164,29 @@ export const ServicesPage: React.FC = () => {
     briefcase: <Briefcase size={40} />,
     heart: <Heart size={40} />,
     users: <Users size={40} />,
-    truck: <Truck size={40} />
+    flag: <Package size={40} />
   };
 
   const processSteps = [
     {
       number: '1',
       title: 'Initial Consultation',
-      description: 'We discuss your event details, preferences, and dietary requirements'
+      description: 'We discuss your event details, equipment needs, and venue requirements'
     },
     {
       number: '2',
-      title: 'Menu Planning',
-      description: 'Our chefs create a customized menu tailored to your event'
+      title: 'Equipment Selection',
+      description: 'Our team helps you choose the perfect tables, chairs, and accessories'
     },
     {
       number: '3',
-      title: 'Final Details',
-      description: 'We finalize logistics, timing, and all service arrangements'
+      title: 'Delivery Planning',
+      description: 'We coordinate delivery, setup timing, and pickup arrangements'
     },
     {
       number: '4',
-      title: 'Event Day',
-      description: 'Our team delivers exceptional service and delicious food'
+      title: 'Event Day Setup',
+      description: 'Our team delivers, sets up, and ensures everything is perfect'
     }
   ];
 
@@ -194,10 +194,10 @@ export const ServicesPage: React.FC = () => {
     <>
       <PageHeader>
         <Container>
-          <PageTitle>Our Catering Services</PageTitle>
+          <PageTitle>Our Equipment Rental Services</PageTitle>
           <PageSubtitle>
-            From intimate gatherings to grand celebrations, we provide exceptional 
-            catering services tailored to your unique needs and vision.
+            From intimate gatherings to grand celebrations, we provide quality 
+            event equipment rental services tailored to your unique needs and vision.
           </PageSubtitle>
         </Container>
       </PageHeader>
@@ -235,7 +235,7 @@ export const ServicesPage: React.FC = () => {
                       <PricingAmount>
                         {service.pricing.type === 'custom' 
                           ? 'Custom Pricing'
-                          : `$${service.pricing.amount}/${service.pricing.type.replace('_', ' ')}`
+                          : `R${service.pricing.amount}/${service.pricing.type.replace('_', ' ')}`
                         }
                       </PricingAmount>
                     </PricingInfo>
@@ -255,7 +255,7 @@ export const ServicesPage: React.FC = () => {
         <Container>
           <SectionTitle>Our Process</SectionTitle>
           <SectionSubtitle>
-            We make planning your event simple and stress-free with our streamlined process
+            We make planning your event equipment simple and stress-free with our streamlined process
           </SectionSubtitle>
           
           <ProcessGrid>

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Leaf } from 'lucide-react';
+import { Package, Info } from 'lucide-react';
 import { Container, Section } from '../common/Container';
 import { Card } from '../common/Card';
 import { Button } from '../common/Button';
-import { menuItems } from '../../data/sampleData';
+import { equipmentItems } from '../../data/sampleData';
 
 const PageHeader = styled(Section)`
   background: linear-gradient(
     rgba(44, 62, 80, 0.8),
     rgba(232, 184, 109, 0.8)
-  ), url('/images/menu-hero.jpg');
+  ), url('/images/equipment-hero.jpg');
   background-size: cover;
   background-position: center;
   color: ${({ theme }) => theme.colors.white};
@@ -56,21 +56,21 @@ const FilterButton = styled(Button)<{ active: boolean }>`
   }
 `;
 
-const MenuGrid = styled.div`
+const EquipmentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: ${({ theme }) => theme.spacing['2xl']};
 `;
 
-const MenuItem = styled(motion.div)``;
+const EquipmentItem = styled(motion.div)``;
 
-const MenuItemCard = styled(Card)`
+const EquipmentItemCard = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-const MenuItemImage = styled.div`
+const EquipmentItemImage = styled.div`
   width: 100%;
   height: 200px;
   background: linear-gradient(45deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
@@ -84,66 +84,69 @@ const MenuItemImage = styled.div`
   font-weight: 600;
 `;
 
-const MenuItemContent = styled.div`
+const EquipmentItemContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
 `;
 
-const MenuItemHeader = styled.div`
+const EquipmentItemHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
-const MenuItemTitle = styled.h3`
+const EquipmentItemTitle = styled.h3`
   color: ${({ theme }) => theme.colors.secondary};
   margin: 0;
   flex: 1;
 `;
 
-const MenuItemPrice = styled.span`
+const EquipmentItemPrice = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-const MenuItemDescription = styled.p`
+const EquipmentItemDescription = styled.p`
   color: ${({ theme }) => theme.colors.neutral[600]};
   line-height: 1.6;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   flex: 1;
 `;
 
-const MenuItemFooter = styled.div`
+const EquipmentItemFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
 `;
 
-const MenuItemTags = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.sm};
-  align-items: center;
+const EquipmentDetails = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ theme }) => theme.colors.neutral[50]};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
-const Tag = styled.span<{ variant: 'vegetarian' | 'vegan' }>`
+const DetailRow = styled.div`
   display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.xs};
+  justify-content: space-between;
   font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ variant, theme }) => 
-    variant === 'vegan' ? theme.colors.success : theme.colors.primary};
-  font-weight: 500;
+  color: ${({ theme }) => theme.colors.neutral[600]};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
-const AllergenInfo = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.sm};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.neutral[500]};
+const DetailLabel = styled.span`
+  font-weight: 600;
 `;
+
+const DetailValue = styled.span``;
 
 // Price formatting function for South African Rand
 const formatPrice = (price: number): string => {
@@ -158,19 +161,19 @@ const formatPrice = (price: number): string => {
 export const MenuPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   
-  const categories = ['All', ...Array.from(new Set(menuItems.map(item => item.category)))];
+  const categories = ['All', ...Array.from(new Set(equipmentItems.map(item => item.category)))];
   
   const filteredItems = selectedCategory === 'All' 
-    ? menuItems 
-    : menuItems.filter(item => item.category === selectedCategory);
+    ? equipmentItems 
+    : equipmentItems.filter(item => item.category === selectedCategory);
 
   return (
     <>
       <PageHeader>
         <Container>
-          <PageTitle>Traditional South African Menu</PageTitle>
+          <PageTitle>Event Equipment Catalog</PageTitle>
           <PageSubtitle>
-            Discover the rich flavors of South Africa - from heritage braais to Cape Malay curries
+            Browse our comprehensive collection of quality event equipment for your special occasions
           </PageSubtitle>
         </Container>
       </PageHeader>
@@ -191,59 +194,65 @@ export const MenuPage: React.FC = () => {
             ))}
           </FilterSection>
 
-          <MenuGrid>
+          <EquipmentGrid>
             {filteredItems.map((item, index) => (
-              <MenuItem
+              <EquipmentItem
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <MenuItemCard variant="elevated">
-                  <MenuItemImage>
-                    {item.name}
-                  </MenuItemImage>
-                  <MenuItemContent>
-                    <MenuItemHeader>
-                      <MenuItemTitle>{item.name}</MenuItemTitle>
-                      <MenuItemPrice>{formatPrice(item.price)}</MenuItemPrice>
-                    </MenuItemHeader>
+                <EquipmentItemCard variant="elevated">
+                  <EquipmentItemImage>
+                    <Package size={40} />
+                  </EquipmentItemImage>
+                  <EquipmentItemContent>
+                    <EquipmentItemHeader>
+                      <EquipmentItemTitle>{item.name}</EquipmentItemTitle>
+                      <EquipmentItemPrice>{formatPrice(item.pricePerDay)}/day</EquipmentItemPrice>
+                    </EquipmentItemHeader>
                     
-                    <MenuItemDescription>
+                    <EquipmentItemDescription>
                       {item.description}
-                    </MenuItemDescription>
+                    </EquipmentItemDescription>
                     
-                    <MenuItemFooter>
-                      <MenuItemTags>
-                        {item.isVegan && (
-                          <Tag variant="vegan">
-                            <Leaf size={16} />
-                            Vegan
-                          </Tag>
-                        )}
-                        {item.isVegetarian && !item.isVegan && (
-                          <Tag variant="vegetarian">
-                            <Leaf size={16} />
-                            Vegetarian
-                          </Tag>
-                        )}
-                      </MenuItemTags>
-                      
+                    <EquipmentDetails>
+                      {item.dimensions && (
+                        <DetailRow>
+                          <DetailLabel>Dimensions:</DetailLabel>
+                          <DetailValue>{item.dimensions}</DetailValue>
+                        </DetailRow>
+                      )}
+                      {item.material && (
+                        <DetailRow>
+                          <DetailLabel>Material:</DetailLabel>
+                          <DetailValue>{item.material}</DetailValue>
+                        </DetailRow>
+                      )}
+                      {item.color && (
+                        <DetailRow>
+                          <DetailLabel>Color:</DetailLabel>
+                          <DetailValue>{item.color}</DetailValue>
+                        </DetailRow>
+                      )}
+                      {item.quantity && (
+                        <DetailRow>
+                          <DetailLabel>Available:</DetailLabel>
+                          <DetailValue>{item.quantity} units</DetailValue>
+                        </DetailRow>
+                      )}
+                    </EquipmentDetails>
+                    
+                    <EquipmentItemFooter>
                       <Button variant="outline" size="sm">
                         Add to Quote
                       </Button>
-                    </MenuItemFooter>
-                    
-                    {item.allergens && item.allergens.length > 0 && (
-                      <AllergenInfo>
-                        Contains: {item.allergens.join(', ')}
-                      </AllergenInfo>
-                    )}
-                  </MenuItemContent>
-                </MenuItemCard>
-              </MenuItem>
+                    </EquipmentItemFooter>
+                  </EquipmentItemContent>
+                </EquipmentItemCard>
+              </EquipmentItem>
             ))}
-          </MenuGrid>
+          </EquipmentGrid>
         </Container>
       </Section>
     </>

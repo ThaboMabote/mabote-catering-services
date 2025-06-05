@@ -98,11 +98,11 @@ export const Footer: React.FC = () => {
       <Container>
         <FooterContent>
           <FooterSection>
-            <h3>Mabote Catering</h3>
+            <h3>Mabote Equipment Rental</h3>
             <CompanyDescription>
-              Celebrating South African heritage through authentic flavours and traditional cuisine. 
-              From intimate braais to grand Heritage Day celebrations, we bring the spirit of 
-              Ubuntu and the taste of Mzansi to your special occasions.
+              Providing quality event equipment across South Africa. From elegant weddings to 
+              corporate conferences, we help create memorable experiences with our comprehensive 
+              range of tables, chairs, linens, and event accessories.
             </CompanyDescription>
             <SocialLinks>
               <SocialLink href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
             <h3>Quick Links</h3>
             <FooterLinks>
               <FooterLink to="/">Home</FooterLink>
-              <FooterLink to="/menu">Menu</FooterLink>
+              <FooterLink to="/menu">Equipment</FooterLink>
               <FooterLink to="/services">Services</FooterLink>
               <FooterLink to="/about">About Us</FooterLink>
               <FooterLink to="/contact">Contact</FooterLink>
@@ -131,10 +131,10 @@ export const Footer: React.FC = () => {
           <FooterSection>
             <h3>Services</h3>
             <FooterLinks>
-              <FooterLink to="/services#braai">Traditional Braais</FooterLink>
-              <FooterLink to="/services#heritage">Heritage Day Events</FooterLink>
-              <FooterLink to="/services#weddings">Weddings & Lobola</FooterLink>
-              <FooterLink to="/services#corporate">Corporate Functions</FooterLink>
+              <FooterLink to="/services#wedding">Wedding Equipment</FooterLink>
+              <FooterLink to="/services#corporate">Corporate Events</FooterLink>
+              <FooterLink to="/services#party">Party Equipment</FooterLink>
+              <FooterLink to="/services#traditional">Traditional Events</FooterLink>
             </FooterLinks>
           </FooterSection>
           
@@ -147,18 +147,18 @@ export const Footer: React.FC = () => {
               </ContactItem>
               <ContactItem>
                 <Mail size={18} />
-                <span>info@mabotecatering.co.za</span>
+                <span>info@maboteequipment.co.za</span>
               </ContactItem>
               <ContactItem>
                 <MapPin size={18} />
-                <span>123 Nelson Mandela Drive<br />Johannesburg, GP 2000<br />South Africa</span>
+                <span>123 Equipment Street<br />Johannesburg, GP 2000<br />South Africa</span>
               </ContactItem>
             </ContactInfo>
           </FooterSection>
         </FooterContent>
         
         <FooterBottom>
-          <p>&copy; 2024 Mabote Catering Services. All rights reserved.</p>
+          <p>&copy; 2024 Mabote Equipment Rental Services. All rights reserved.</p>
         </FooterBottom>
       </Container>
     </FooterWrapper>

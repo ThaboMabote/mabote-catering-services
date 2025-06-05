@@ -10,6 +10,19 @@ export interface MenuItem {
   allergens?: string[];
 }
 
+export interface EquipmentItem {
+  id: string;
+  name: string;
+  description: string;
+  pricePerDay: number;
+  category: string;
+  image?: string;
+  quantity?: number;
+  dimensions?: string;
+  material?: string;
+  color?: string;
+}
+
 export interface Service {
   id: string;
   title: string;

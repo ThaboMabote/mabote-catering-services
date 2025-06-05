@@ -212,22 +212,22 @@ export const ContactPage: React.FC = () => {
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      details: '(555) 123-4567\nCall us for immediate assistance'
+      details: '+27 11 123 4567\nCall us for immediate assistance'
     },
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: 'info@mabotecatering.com\nWe respond within 24 hours'
+      details: 'info@maboteequipment.co.za\nWe respond within 24 hours'
     },
     {
       icon: <MapPin size={24} />,
       title: 'Address',
-      details: '123 Culinary Street\nFood City, FC 12345'
+      details: '123 Equipment Street\nJohannesburg, GP 2000\nSouth Africa'
     },
     {
       icon: <Clock size={24} />,
       title: 'Business Hours',
-      details: 'Mon-Fri: 9:00 AM - 6:00 PM\nSat-Sun: 10:00 AM - 4:00 PM'
+      details: 'Mon-Fri: 8:00 AM - 5:00 PM\nSat: 9:00 AM - 2:00 PM\nSun: Closed'
     }
   ];
 
@@ -237,7 +237,7 @@ export const ContactPage: React.FC = () => {
         <Container>
           <PageTitle>Get in Touch</PageTitle>
           <PageSubtitle>
-            Ready to plan your next event? Contact us today for a personalized quote 
+            Ready to plan your next event? Contact us today for a personalized equipment rental quote 
             and let us help make your celebration unforgettable.
           </PageSubtitle>
         </Container>
@@ -357,7 +357,7 @@ export const ContactPage: React.FC = () => {
                     <Label htmlFor="message">Message *</Label>
                     <TextArea
                       id="message"
-                      placeholder="Tell us about your event, dietary requirements, and any special requests..."
+                      placeholder="Tell us about your event, equipment needs, guest count, and any special requirements..."
                       hasError={!!errors.message}
                       {...register('message')}
                     />
